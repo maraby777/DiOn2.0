@@ -42,16 +42,32 @@ public class JBUser implements Serializable {
 
     public String doLogin() {
         List l = userFacade.findByField("login", login);
-        if(l.size()==1){
-            return "loginOK";
-            //if(l.)
-        }else{
+        if (l.size() == 1) {
+
+            User curUser = (User) l.get(0);
+            if (curUser.getHashString() == null ? passHash == null : curUser.getHashString().equals(passHash)) {
+                return "loginOK";
+            } else {
+                return "loginFail";
+            }
+        } else {
             return "loginFail";
         }
     }
 
     public String doRegister() {
-        return "success";
+        List l = userFacade.findByField("login", login);
+        if(l.isEmpty()){
+            User u = new User();
+            u.setIdUser(Integer.parseInt("2"));
+            u.setLogin(login);
+            u.setHashString(passHash);
+            userFacade.create(u);
+            return "registerOK";
+        }else{
+            return "registerFail";
+        }
+        
     }
 
     public String getLogin() {

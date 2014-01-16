@@ -3,6 +3,8 @@
   <persistence-unit name="WAPU" transaction-type="JTA">
     <jta-data-source>jdbc/WA</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+      <property name="eclipselink.profiler" value="PerformanceProfiler"/>
+    </properties>
   </persistence-unit>
 </persistence>
