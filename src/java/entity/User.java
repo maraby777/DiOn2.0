@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author vladimir
+ * @author maraby
  */
 @Entity
 @Table(name = "user")
@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByHashString", query = "SELECT u FROM User u WHERE u.hashString = :hashString")})
 public class User implements Serializable {
 
+//@GeneratedValue(strategy = GenerationType.IDENTITY) автоинкремент
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

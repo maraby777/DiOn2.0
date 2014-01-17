@@ -18,13 +18,16 @@ import session.UserFacade;
 
 /**
  *
- * @author vladimir
+ * @author maraby
  */
+//аннотация бина 
 @Named("User")
+//область видимости, период жизни - сессия
 @SessionScoped
 public class JBUser implements Serializable {
 
     @EJB
+    //ссылка бина на юзерФассад
     private UserFacade userFacade;
     private User user;
     private boolean isAuth;
@@ -40,10 +43,11 @@ public class JBUser implements Serializable {
         isAuth = false;
     }
 
+    //
     public String doLogin() {
-        List l = userFacade.findByField("login", login);
+        List l = userFacade.findByField("login", login);//поиск в базе логина по введенному логину
         if (l.size() == 1) {
-
+//проверка хеш паролей
             User curUser = (User) l.get(0);
             if (curUser.getHashString() == null ? passHash == null : curUser.getHashString().equals(passHash)) {
                 return "loginOK";
@@ -59,7 +63,7 @@ public class JBUser implements Serializable {
         List l = userFacade.findByField("login", login);
         if(l.isEmpty()){
             User u = new User();
-            u.setIdUser(Integer.parseInt("2"));
+            //u.setIdUser(Integer.parseInt("2"));
             u.setLogin(login);
             u.setHashString(passHash);
             userFacade.create(u);
@@ -82,6 +86,7 @@ public class JBUser implements Serializable {
         this.login = login;
     }
 
+    //получаем  стринг,  устанавливаем passHesh  новая строка с хеш функцией
     public void setPassHash(String pass) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         this.passHash = new String(md.digest(pass.getBytes()));

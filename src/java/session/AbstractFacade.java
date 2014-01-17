@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author vladimir
+ * @author maraby
  */
 public abstract class AbstractFacade<T> {
 
@@ -52,7 +52,7 @@ public abstract class AbstractFacade<T> {
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
-
+//поиск по любому слою.Работа с таблицами и объектами
     public List<T> findByField(String fieldsName, Object field) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));

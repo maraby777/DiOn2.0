@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author vladimir
+ * @author maraby
  */
 @Stateless
 public class UserFacade extends AbstractFacade<User> {
@@ -25,6 +25,7 @@ public class UserFacade extends AbstractFacade<User> {
         return em;
     }
 
+    //передается класс в абстрактный родительский класс
     public UserFacade() {
         super(User.class);
     }

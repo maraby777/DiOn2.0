@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author vladimir
+ * @author maraby
  */
 @Stateless
 public class FoodHasFoodFacade extends AbstractFacade<FoodHasFood> {
