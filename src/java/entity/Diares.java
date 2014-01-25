@@ -137,6 +137,7 @@ public class Diares implements Serializable {
     public void setUseridUser(User useridUser) {
         this.useridUser = useridUser;
     }
+    
 
     @Override
     public int hashCode() {
