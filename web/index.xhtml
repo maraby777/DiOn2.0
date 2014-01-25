@@ -11,12 +11,12 @@
             <h2>Registration Form</h2>
             <ice:panelGrid columns="2">
                 <ice:outputText value="Login:"/>
-                <ice:inputText value="#{User.login}"/> 
+                <ice:inputText value="#{user.login}"/> 
                 <ice:outputText value="Password:"/>
-                <ice:inputSecret value="#{User.passHash}"/> 
+                <ice:inputSecret value="#{user.passHash}"/> 
             </ice:panelGrid>    
-            <ice:commandButton action="#{User.doLogin}" value="Login"/> 
-            <ice:commandButton action="#{User.doRegister}" value="Register"/> 
+            <ice:commandButton action="#{user.doLogin}" value="Login"/> 
+            <ice:commandButton action="#{user.doRegister}" value="Register"/> 
         </ice:form>
     </h:body>
 </html>
