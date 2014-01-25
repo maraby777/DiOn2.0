@@ -5,7 +5,10 @@
  */
 package session;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 
 /**
@@ -43,21 +46,37 @@ public abstract class AbstractFacade<T> {
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
+//поиск по какому-то диапазону. Для статистики
 
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
-        q.setMaxResults(range[1] - range[0] + 1);
+        q.setMaxResults(range[1] - range[0] + 1);//ограничение запроса. Почитать ЗАВТРА
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
 //поиск по любому слою.Работа с таблицами и объектами
+
     public List<T> findByField(String fieldsName, Object field) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
+        javax.persistence.Query q = getEntityManager().createQuery(cq);//запрос СКл
+        q.setParameter(fieldsName, field);//параметры метода
+        return q.getResultList();
+    }
+
+//*************
+    //поиск по полям
+    public List<T> findByFields(HashMap <String,Object> map) {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
-        q.setParameter(fieldsName, field);
+        for (Map.Entry<String, Object> entry : map.entrySet()) { //!!! синтаксис???ВТФАК
+            String string = entry.getKey();
+            Object object = entry.getValue();
+            q.setParameter(string, object);
+        }
         return q.getResultList();
     }
 

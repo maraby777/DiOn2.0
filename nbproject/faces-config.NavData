@@ -4,8 +4,11 @@
     <Scope Scope="Project">
         <Node id="jsf/log.xhtml" x="150" y="150" zoom="true"/>
         <Node id="jsf/register.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="jsf/diary.xhtml" x="150" y="450" zoom="true"/>
         <Node id="index.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="jsf/addToDiary.xhtml" x="650" y="150" zoom="true"/>
         <Node id="jsf/nolog.xhtml" x="399" y="243" zoom="true"/>
+        <Node id="jsf/addToDB.xhtml" x="400" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

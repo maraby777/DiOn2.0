@@ -21,8 +21,8 @@ import session.UserFacade;
  * @author maraby
  */
 //аннотация бина 
-@Named("User")
-//область видимости, период жизни - сессия
+@Named("user")
+//область видимости, период жизни юзера- сессия
 @SessionScoped
 public class JBUser implements Serializable {
 
@@ -60,7 +60,7 @@ public class JBUser implements Serializable {
     }
 
     public String doRegister() {
-        List l = userFacade.findByField("login", login);
+        List l = userFacade.findByField("login", login);//поиск по полю "логин" логина
         if(l.isEmpty()){
             User u = new User();
             //u.setIdUser(Integer.parseInt("2"));

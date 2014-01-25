@@ -4,24 +4,39 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
     <navigation-rule>
-        <from-view-id>index.xhtml</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{User.doLogin}</from-action>
+            <from-action>#{user.doLogin}</from-action>
             <from-outcome>loginOK</from-outcome>
-            <to-view-id>/jsf/log.xhtml</to-view-id>
+            <to-view-id>/jsf/diary.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{User.doLogin}</from-action>
+            <from-action>#{user.doLogin}</from-action>
             <from-outcome>loginFail</from-outcome>
             <to-view-id>/jsf/nolog.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{User.doRegister}</from-action>
+            <from-action>#{user.doRegister}</from-action>
             <from-outcome>registerOK</from-outcome>
             <to-view-id>/jsf/register.xhtml</to-view-id>
         </navigation-case>
-        
-        
-        
+      </navigation-rule>  
+      
+      <navigation-rule>
+        <from-view-id>/jsf/diary.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{diary.toAdd}</from-action>
+            <from-outcome>toAdd</from-outcome>
+            <to-view-id>/jsf/addToDiary.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/jsf/addToDiary.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{diary.addToDB}</from-action>
+            <from-outcome>addToDB</from-outcome>
+            <to-view-id>/jsf/addToDB.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
